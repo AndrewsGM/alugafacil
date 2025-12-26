@@ -1,0 +1,32 @@
+# Prometheus Configuration for Aluga Fácil
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'alugafacil-dev'
+    environment: 'development'
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Node.js services (quando implementados)
+  # Uncomment quando os serviços estiverem rodando
+  
+  # - job_name: 'identity-service'
+  #   static_configs:
+  #     - targets: ['identity:3100']
+  
+  # - job_name: 'user-profile-service'
+  #   static_configs:
+  #     - targets: ['user-profile:3101']
+  
+  # - job_name: 'vehicle-service'
+  #   static_configs:
+  #     - targets: ['vehicle:3102']
+
+  # Adicionar mais serviços conforme forem criados

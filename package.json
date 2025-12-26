@@ -1,0 +1,55 @@
+{
+  "name": "@aluga-facil/root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plataforma de Mobilidade como Serviço - Locação P2P de Veículos",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "dev:web": "turbo run dev --filter=@aluga-facil/web",
+    "dev:api": "turbo run dev --filter=./services/*",
+    "build": "turbo run build",
+    "build:web": "turbo run build --filter=@aluga-facil/web",
+    "build:services": "turbo run build --filter=./services/*",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "test:coverage": "turbo run test:coverage",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "db:migrate": "turbo run db:migrate --filter=./services/*",
+    "db:seed": "turbo run db:seed --filter=./services/*",
+    "db:reset": "turbo run db:reset --filter=./services/*",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:reset": "docker-compose down -v && docker-compose up -d",
+    "storybook": "turbo run storybook --filter=@aluga-facil/ui",
+    "build:storybook": "turbo run build:storybook --filter=@aluga-facil/ui",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@types/node": "^20.10.5",
+    "eslint": "^8.56.0",
+    "eslint-config-custom": "*",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "packageManager": "npm@10.2.4"
+}
